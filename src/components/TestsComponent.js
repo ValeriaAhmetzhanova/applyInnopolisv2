@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 
-class Tests extends Component {
+class TestsCreator extends Component {
 
     constructor(props) {
         super(props);
@@ -63,7 +63,8 @@ class Tests extends Component {
                                 <Button color="info" onClick={this.addQuestion}>Add new question</Button>
                             </Col>
                             <Col md={9}>
-                                <p className="text-muted">Students will see answers in random order. You can leave some answers empty.</p>
+                                <p className="text-muted">Students will see answers in random order. You can leave some
+                                    answers empty.</p>
                             </Col>
                         </FormGroup>
 
@@ -149,4 +150,4 @@ class Tests extends Component {
     }
 }
 
-export default Tests;
+export default TestsCreator;
