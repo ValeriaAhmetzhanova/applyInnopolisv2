@@ -11,6 +11,7 @@ class Registration extends Component {
             lastname: '',
             telnum: '',
             email: '',
+            level: '',
             agree: false
         };
 
@@ -31,6 +32,7 @@ class Registration extends Component {
 
     handleSubmit(event) {
         console.log('Current State is: ' + JSON.stringify(this.state));
+        alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();
     }
 
@@ -77,6 +79,17 @@ class Registration extends Component {
                                        placeholder="Email"
                                        value={this.state.email}
                                        onChange={this.handleInputChange} />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label htmlFor="level" md={2}>Level</Label>
+                            <Col md={{size: 3, offset: 1}}>
+                                <Input type="select" name="level"
+                                       value={this.state.level}
+                                       onChange={this.handleInputChange}>
+                                    <option>Bachelor</option>
+                                    <option>Masters</option>
+                                </Input>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
