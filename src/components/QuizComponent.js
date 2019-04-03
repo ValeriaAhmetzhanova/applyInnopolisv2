@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TEST } from "../shared/questions";
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 
-class Tests extends Component {
+class Quiz extends Component {
     constructor(props) {
         super(props);
 
@@ -63,4 +63,4 @@ class Tests extends Component {
 
 }
 
-export default Tests;
+export default Quiz;

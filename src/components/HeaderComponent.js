@@ -57,7 +57,7 @@ class Header extends Component {
                                     <NavLink className="nav-link ml-lg-5"  to='/data'> Data</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link ml-lg-5"  to='/tests'> Tests</NavLink>
+                                    <NavLink className="nav-link ml-lg-5"  to='/quiz'> Quiz</NavLink>
                                 </NavItem>
                             </Nav>
                             <div className="ml-auto">
