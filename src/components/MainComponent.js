@@ -4,7 +4,7 @@ import Registration from "./RegistrationComponent";
 import Portfolio from "./PortfolioComponent";
 import Header from "./HeaderComponent";
 import Data from "./DataComponent";
-import Tests from "./TestsComponent";
+import Quiz from "./QuizComponent";
 
 class Main extends Component {
 
@@ -35,7 +35,7 @@ class Main extends Component {
                     <Route exact path='/signup' component={() => <Registration />} />
                     <Route exact path='/portfolio' component={() => <Portfolio />} />
                     <Route exact path='/data' component={() => <Data />} />
-                    <Route exact path='/tests' component={() => <Tests />} />
+                    <Route exact path='/quiz' component={() => <Quiz />} />
                     <Redirect to="/home" />
                 </Switch>
             </div>

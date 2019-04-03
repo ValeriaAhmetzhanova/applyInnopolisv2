@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { TEST } from "../shared/questions";
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 
-class Tests extends Component {
-    constructor(props) {
+class Quiz extends Component {
+
+    constructor(props){
         super(props);
 
         this.state = {
@@ -11,6 +12,7 @@ class Tests extends Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     handleSubmit(event) {
@@ -63,4 +65,4 @@ class Tests extends Component {
 
 }
 
-export default Tests;
+export default Quiz;
