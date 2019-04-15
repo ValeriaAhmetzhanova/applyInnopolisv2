@@ -31,8 +31,30 @@ class Registration extends Component {
     }
 
     handleSubmit(event) {
-        console.log('Current State is: ' + JSON.stringify(this.state));
-        alert('Current State is: ' + JSON.stringify(this.state));
+        var lev;
+        if (this.state.level === 'Bachelor') lev = 0;
+        else if (this.state.level === 'Masters') lev = 1;
+        fetch('http://34.229.238.197/api/register\n', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                first_name: this.state.firstname,
+                last_name: this.state.lastname,
+                phone: this.state.phone,
+                email: this.state.email,
+                password: this.state.password,
+                level: lev
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => alert(responseJson))
+            .catch((error) => {
+                alert(error);
+                console.error(error);
+            });
         event.preventDefault();
     }
 
