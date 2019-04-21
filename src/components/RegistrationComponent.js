@@ -11,7 +11,8 @@ class Registration extends Component {
             lastname: '',
             telnum: '',
             email: '',
-            level: '',
+            level: 'Bachelor',
+            password: '',
             agree: false
         };
 
@@ -43,14 +44,14 @@ class Registration extends Component {
             body: JSON.stringify({
                 first_name: this.state.firstname,
                 last_name: this.state.lastname,
-                phone: this.state.phone,
+                phone: this.state.telnum,
                 email: this.state.email,
                 password: this.state.password,
                 level: lev
             }),
         })
             .then((response) => response.json())
-            .then((responseJson) => alert(responseJson))
+            .then((responseJson) => console.log(responseJson))
             .catch((error) => {
                 alert(error);
                 console.error(error);
@@ -100,6 +101,15 @@ class Registration extends Component {
                                 <Input type="email" id="email" name="email"
                                        placeholder="Email"
                                        value={this.state.email}
+                                       onChange={this.handleInputChange} />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label htmlFor="password" md={2}>Password</Label>
+                            <Col md={10}>
+                                <Input type="password" id="password" name="password"
+                                       placeholder="Password"
+                                       value={this.state.password}
                                        onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>

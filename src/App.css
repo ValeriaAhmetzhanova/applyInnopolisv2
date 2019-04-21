@@ -132,6 +132,18 @@
   align-items: center;
 }
 
+.signIn {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}
+
+.signUp {
+  position: absolute;
+  top: 200px;
+  right: 20px;
+}
+
 button {
   font-family: "Roboto medium", sans-serif;
   font-size: 14px;
