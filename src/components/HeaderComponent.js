@@ -68,8 +68,8 @@ class Header extends Component {
             if ((cookies.get('token').token) === '') active = false;
             if ((cookies.get('token').token) === undefined) active = false;
 
-            console.log(active);
-            console.log(cookies.get('token').token);
+            // console.log(active);
+            // console.log(cookies.get('token').token);
         } else {
             active = false;
         }

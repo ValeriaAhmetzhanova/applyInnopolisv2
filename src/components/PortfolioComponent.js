@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Dropzone from './DropzoneComponent';
 import Progress from './ProgressComponent';
+import Cookies from "universal-cookie";
 
 class Portfolio extends Component {
     constructor(props) {
@@ -35,8 +36,8 @@ class Portfolio extends Component {
 
             this.setState({ successfullUploaded: true, uploading: false });
         } catch (e) {
-            // Not Production ready! Do some error handling here instead...
-            this.setState({ successfullUploaded: true, uploading: false });
+                alert(e);
+                console.error(e);
         }
     }
 
@@ -69,11 +70,15 @@ class Portfolio extends Component {
                 reject(req.response);
             });
 
-            const formData = new FormData();
-            formData.append("file", file, file.name);
+            const cookies = new Cookies();
 
-            req.open("POST", "http://localhost:8000/upload");
+            const formData = new FormData();
+            formData.append("portfolio", file, file.name);
+
+            req.open("POST", "http://34.229.238.197/api/user/upload");
+            req.setRequestHeader('Authorization', 'Bearer '+ cookies.get('token').token);
             req.send(formData);
+
         });
     }
 

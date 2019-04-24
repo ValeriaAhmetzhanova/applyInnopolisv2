@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
+import Cookies from "universal-cookie";
 
 class Data extends Component {
 
@@ -32,6 +33,31 @@ class Data extends Component {
         console.log('Current State is: ' + JSON.stringify(this.state));
         alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();
+
+        const cookies = new Cookies();
+
+        fetch('http://34.229.238.197/api/user/update', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+ cookies.get('token').token,
+            },
+            body: JSON.stringify({
+                dateOfBirth: this.state.dateOfBirth,
+                gender: this.state.gender,
+                learned: this.state.learned,
+                country: this.state.country,
+                city: this.state.city,
+                citizenship: this.state.citizenship
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => console.log(responseJson))
+            .catch((error) => {
+                alert(error);
+                console.error(error);
+            })
     }
 
     render() {
@@ -102,7 +128,7 @@ class Data extends Component {
                         </FormGroup>
                         <FormGroup row>
                             <Col md={{size: 10, offset: 2}}>
-                                <Button type="submit" color="primary">
+                                <Button type="submit" color="primary" onClick={this.handleSubmit}>
                                     Submit
                                 </Button>
                             </Col>

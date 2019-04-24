@@ -5,27 +5,57 @@ import Portfolio from "./PortfolioComponent";
 import Header from "./HeaderComponent";
 import Data from "./DataComponent";
 import Quiz from "./QuizComponent";
+import Cookies from "universal-cookie";
+
+
+class HomePage extends  Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            date: ''
+        };
+
+        const cookies = new Cookies();
+
+        fetch('http://34.229.238.197/api/user/schedule', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+ cookies.get('token').token,
+            }
+        })
+            .then((response) => response.json())
+            .then((responseJson) => this.setState({date: responseJson.success.date}))
+            .catch((error) => {
+                alert(error);
+                console.error(error);
+            });
+
+
+    }
+
+    render() {
+        return(
+            <div className={"interview"}>
+                <h3>The date of the interview is: {this.state.date}</h3>
+            </div>
+        );
+    }
+}
 
 class Main extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
+            date: ''
         };
+
     }
 
     render() {
-
-        const HomePage = () => {
-            return(
-                <div>
-                    <h1>
-                        Home page
-                    </h1>
-                </div>
-            );
-        };
 
         return (
             <div>
