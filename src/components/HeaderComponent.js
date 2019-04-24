@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader,
     ModalBody, Form, FormGroup, Label, Input
@@ -55,7 +55,7 @@ class Header extends Component {
         this.toggleModal();
         console.log(this.state.token);
         const cookies = new Cookies();
-        cookies.set('token', this.state.token, { path: '/' });
+        cookies.set('token', this.state.token, {path: '/'});
         console.log(cookies.get('token'));
         alert("Username: " + this.email.value + " Password: " + this.password.value);
         event.preventDefault();
@@ -64,24 +64,31 @@ class Header extends Component {
     renderLinks() {
         const cookies = new Cookies();
         var active = true;
-        if ((cookies.get('token').token) === '') active = false;
-        if ((cookies.get('token').token) === undefined) active = false;
-        console.log(active);
-        console.log(cookies.get('token').token);
+        if (cookies.get('token') !== undefined) {
+            if ((cookies.get('token').token) === '') active = false;
+            if ((cookies.get('token').token) === undefined) active = false;
+
+            console.log(active);
+            console.log(cookies.get('token').token);
+        } else {
+            active = false;
+        }
+
+
         if (active)
             return (
                 <Nav navbar>
                     <NavItem>
-                        <NavLink className="nav-link ml-lg-5"  to='/home'> Home</NavLink>
+                        <NavLink className="nav-link ml-lg-5" to='/home'> Home</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="nav-link ml-lg-5"  to='/portfolio'> Portfolio</NavLink>
+                        <NavLink className="nav-link ml-lg-5" to='/portfolio'> Portfolio</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="nav-link ml-lg-5"  to='/data'> Data</NavLink>
+                        <NavLink className="nav-link ml-lg-5" to='/data'> Data</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="nav-link ml-lg-5"  to='/quiz'> Quiz</NavLink>
+                        <NavLink className="nav-link ml-lg-5" to='/quiz'> Quiz</NavLink>
                     </NavItem>
                 </Nav>
             );
@@ -100,11 +107,11 @@ class Header extends Component {
 
     render() {
 
-        return(
+        return (
             <React.Fragment>
                 <Navbar light expand="md">
                     <div className="container">
-                        <NavbarToggler onClick={this.toggleNav} />
+                        <NavbarToggler onClick={this.toggleNav}/>
                         <NavbarBrand className="mr-auto brand" href="/">Apply Innopolis</NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <div>{this.renderLinks()}</div>
@@ -118,12 +125,12 @@ class Header extends Component {
                             <FormGroup>
                                 <Label htmlFor="email">Email</Label>
                                 <Input type="text" id="email" name="email"
-                                       innerRef={(input) => this.email = input} />
+                                       innerRef={(input) => this.email = input}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
                                 <Input type="password" id="password" name="password"
-                                       innerRef={(input) => this.password = input}  />
+                                       innerRef={(input) => this.password = input}/>
                             </FormGroup>
                             <Button type="submit" value="submit" color="success">Sign in</Button>
                             <Link className={"signUp"} to='/signup' onClick={this.toggleModal}>Sign Up</Link>
